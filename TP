@@ -1,0 +1,44 @@
+ Définition
+
+Le PGCD(a, b) est le plus grand entier qui divise a et b sans laisser de reste.
+
+ Principe de l’algorithme d’Euclide
+
+Si on divise le nombre a par b, alors :
+
+> PGCD(a, b) = PGCD(b, reste)
+et on répète l’opération jusqu’à ce que le reste soit nul.
+Le dernier diviseur non nul est le PGCD.
+
+Exemple:
+PGCD(36,56)
+56 ÷ 36 = 2 reste 20
+36 ÷ 12 = 3 reste 0
+donc PGCD(36,56) = 12
+
+3. Implémentation en langage C
+
+#include <stdio.h>
+
+int main() {
+    int a, b, reste;
+
+    printf("Entrez le premier nombre : ");
+    scanf("%d", &a);
+    printf("Entrez le deuxieme nombre : ");
+    scanf("%d", &b);
+
+    printf("\nÉtapes du calcul :\n");
+
+    // Boucle TANT QUE b n'est pas nul
+    while (b != 0) {
+        reste = a % b;
+        printf("%d = %d * (%d) + %d\n", a, b, a / b, reste);
+        a = b;
+        b = reste;
+    }
+
+    printf("\nLe PGCD est : %d\n", a);
+
+    return 0;
+}
