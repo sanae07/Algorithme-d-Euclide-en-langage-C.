@@ -39,6 +39,17 @@ int main() {
     }
 
     printf("\nLe PGCD est : %d\n", a);
+    if (a == 1) {
+        printf("les nombres sont premiers entre eux (PGCD = 1)\n");
+// Calcul rapide des coefficirnts de Bézout 
+        int r0 = a0, r1 = b1, s0 = 1, s1 = 0, t0 = 0, t1 = 1;
+        while (r1 != 0) {
+           int q = r0 / r1, r = r0 % r1;
+           int s = s0 - q * s1, t = t0 - q * t1; 
+         r0 = r1; r1 = r; s0 = s1; s1 = s; t0 = t1; t1 = t; 
+           }
+     printf("coefficients de Bézout : x = %d, y = %d\n" , s0, t0);
+      }
 
     return 0;
 }
